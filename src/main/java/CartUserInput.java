@@ -17,6 +17,7 @@ public class CartUserInput extends UserInput {
         while(!choice.equalsIgnoreCase("H")) {
             switch(choice) {
                 case "C" -> {
+                    System.out.println("Check out feature not available rn 💀");
                     // Add check out here later
                 }
 
