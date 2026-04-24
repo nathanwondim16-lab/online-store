@@ -10,13 +10,15 @@ public class ProductInventory {
     ProductInventory(String file) {
         inventory = new ArrayList<>();
         this.file = file;
+        loadProducts();
     }
 
 
     private void loadProducts() {
         try { // Ask gregor how to do the try with resources approach so I don't have to manually close the bufferedreader.
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line = reader.readLine(); // Skips the header of the file
+            reader.readLine(); // Skips the header of the file
+            String line;
             while((line = reader.readLine()) != null) {
                 String[] columns = line.split("\\|"); // Stores each line into an array of 4 indexes. elements
 
@@ -36,8 +38,8 @@ public class ProductInventory {
     }
 
     public void displayProducts() {
-        loadProducts();
         System.out.println("Here are all the available products that you can purchase\n");
+
         for(Product product : inventory) {
             System.out.println(product.getProduct());
         }

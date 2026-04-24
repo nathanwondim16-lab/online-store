@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Product {
     private String sku;
     private String productName;
@@ -33,7 +31,7 @@ public class Product {
     public String getProduct() {
        return Colors.TRON.printWithColor(sku) + ", "
                + Colors.AMBER.printWithColor(productName) + ", "
-               + Colors.CRIMSON.printWithColor("$" + String.valueOf(price))
+               + Colors.CRIMSON.printWithColor(String.format("$%.2f", price))
                + ", " + Colors.CHAMPAGNE_SILVER.printWithColor(department);
     }
 
