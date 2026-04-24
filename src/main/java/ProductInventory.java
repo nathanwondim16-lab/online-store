@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class ProductInventory {
-    private final String file;
+    protected final String file;
     private final ArrayList<Product> inventory;
 
 
@@ -43,14 +43,14 @@ public class ProductInventory {
         }
     }
 
-    public void searchProducts(String itemName) {
+    public Product searchProducts(String itemName) {
         for(Product product : inventory) {
             if(product.getProductName().equalsIgnoreCase(itemName)) {
-                System.out.println("\nHere's the product you're looking for: " + product.getProduct());
-                return;
+                return product;
             }
         }
         System.out.println("Sorry, it looks like we don't have that product 😓");
+        return null;
     }
 
     public void filterProducts(double maxPrice) {
