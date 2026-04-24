@@ -1,12 +1,10 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProductInventory {
     private final String file;
-    private ArrayList<Product> inventory;
+    private final ArrayList<Product> inventory;
 
 
     ProductInventory(String file) {
@@ -15,7 +13,7 @@ public class ProductInventory {
     }
 
 
-    public void loadProducts() {
+    private void loadProducts() {
         try { // Ask gregor how to do the try with resources approach so I don't have to manually close the bufferedreader.
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine(); // Skips the header of the file
@@ -38,22 +36,28 @@ public class ProductInventory {
     }
 
     public void displayProducts() {
+        loadProducts();
         System.out.println("Here are all the available products that you can purchase\n");
         for(Product product : inventory) {
             System.out.println(product.getProduct());
         }
-        System.out.println("""
-                \n--------------------------------------
-                What would you like to do?
-                (S)earch for a product
-                (F)ilter through products
-                (A)dd product to your cart
-                (H) Go back to the Home page
-                --------------------------------------
-                """);
     }
 
-    public void searchProduct() {
+    public void searchProducts(String itemName) {
+        for(Product product : inventory) {
+            if(product.getProductName().equalsIgnoreCase(itemName)) {
+                System.out.println("\nHere's the product you're looking for: " + product.getProduct());
+                return;
+            }
+        }
+        System.out.println("Sorry, it looks like we don't have that product 😓");
+    }
 
+    public void filterProducts(double maxPrice) {
+        for(Product product : inventory) {
+            if(product.getPrice() <= maxPrice) {
+                System.out.println(product.getProduct());
+            }
+        }
     }
 }
