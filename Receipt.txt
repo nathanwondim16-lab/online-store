@@ -1,0 +1,7 @@
+<-------------------SALES RECEIPT------------------->
+Name:                Nathan Wondim
+Date purchased:      04/26/2026 9:30PM
+Items purchased:     2
+Sales total:         $305.48
+Amount paid:         $679.00
+Change given:        $373.52

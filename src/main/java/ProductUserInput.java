@@ -29,7 +29,9 @@ public class ProductUserInput extends UserInput {
                 }
 
                 case "F" -> {
-                    System.out.println(); // Add filter functionality later
+                    System.out.print("Show products under what price? ");
+                    double maxPrice = Double.parseDouble(scanner.nextLine().strip());
+                    inventory.filterProducts(maxPrice);
                 }
 
                 case "A" -> {
@@ -42,6 +44,7 @@ public class ProductUserInput extends UserInput {
                         System.out.println("\nProduct not found");
                     }
                 }
+                default -> System.out.println("Invalid option. Please try again.");
             }
             System.out.print(message);
             choice = scanner.nextLine().strip().toUpperCase();

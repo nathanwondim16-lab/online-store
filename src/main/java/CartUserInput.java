@@ -17,20 +17,25 @@ public class CartUserInput extends UserInput {
         while(!choice.equalsIgnoreCase("H")) {
             switch(choice) {
                 case "C" -> {
-                    System.out.println("Check out feature not available rn 💀");
-                    // Add check out here later
+                    if(cart.getNumOfCartItems() == 0) {
+                        System.out.println("There's nothing for you to checkout because your cart is currently empty.");
+                    } else {
+                        CheckingOut checkout = new CheckingOut(cart);
+                        checkout.checkout();
+                    }
                 }
 
                 case "R" -> {
                     System.out.print("Enter the name of the product you want to remove from your cart: ");
                     String productName = scanner.nextLine().strip();
-                    Product removeProduct = inventory.searchProducts(productName);
+                    Product removeProduct = cart.searchCart(productName);
                     if(removeProduct != null) {
                         cart.remove(removeProduct);
                     } else {
                         System.out.println("\nProduct not found.");
                     }
                 }
+                default -> System.out.println("Invalid option. Please try again.");
 
             }
             System.out.print(message);

@@ -13,8 +13,8 @@ public abstract class UserInput {
                 \nChoose from the options below:
                 (P) Display Products
                 (C) Display Cart
-                (E)xit - closes out of the application\n
-              
+                (E)xit - closes out of the application
+                
                 Select option:\s""");
     }
 
